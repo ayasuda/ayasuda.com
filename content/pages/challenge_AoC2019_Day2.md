@@ -336,5 +336,3 @@ end
 STDERR.puts "NOT FOUND"
 ```
 
-<!-- bursts into flames
-magic somke -->
