@@ -1,0 +1,8 @@
+{{- if and .IsPage .IsTranslated }}
+<nav class="article-languages" aria-label="{{ if eq .Lang "ja" }}記事の言語{{ else }}Article language{{ end }}">
+  {{- range $index, $translation := .AllTranslations }}
+  {{- if $index }}<span aria-hidden="true"> / </span>{{ end }}
+  <a href="{{ .RelPermalink }}" lang="{{ .Lang }}" hreflang="{{ .Lang }}"{{ if eq .Lang $.Lang }} aria-current="page"{{ else }} rel="alternate"{{ end }}>{{ .Language.LanguageName }}</a>
+  {{- end }}
+</nav>
+{{- end }}

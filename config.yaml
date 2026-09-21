@@ -5,6 +5,18 @@ pagination:
 theme: PaperMod
 
 languageCode: ja-jp
+defaultContentLanguage: ja
+defaultContentLanguageInSubdir: false
+languages:
+  ja:
+    languageCode: ja-jp
+    languageName: 日本語
+    weight: 1
+  en:
+    languageCode: en-us
+    languageName: English
+    weight: 2
+    hasCJKLanguage: false
 hasCJKLanguage: true
 
 enableRobotsTXT: true
