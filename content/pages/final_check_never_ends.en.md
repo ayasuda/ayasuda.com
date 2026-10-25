@@ -16,7 +16,7 @@ keywords:
 
 I've been building an online bookmarking and note-taking tool called “kakitsuke” on my own.
 
-<!-- TODO: Insert the provided screenshot of kakitsuke here -->
+![Screenshot of kakitsuke](/img/final-check-neverends/kakitsuke.png)
 
 The major features are more or less finished. So I decided to call the next stage a closed alpha and invite a few people to try it.
 

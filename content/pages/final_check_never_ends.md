@@ -16,7 +16,7 @@ keywords:
 
 個人開発で、オンラインブックマーク・メモツールの『kakitsuke』を作っている。
 
-<!-- TODO: 添付スクリーンショットをこの位置に追加する -->
+![kakitsuke の画面](/img/final-check-neverends/kakitsuke.png)
 
 大まかな機能群はできあがった。そこで、クローズドアルファと称して、何人かに使ってもらおうと考えている。
 
