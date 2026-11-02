@@ -92,6 +92,33 @@ Two parents, five children, four discounted tickets. It works.
 
 And this is the easy version. Now add age limits, incompatible promotions, and effective dates.
 
+There's another approach, too: instead of finding values that satisfy constraints, use a proof assistant such as [Lean](https://en.wikipedia.org/wiki/Lean_(proof_assistant)) to prove that a program cannot violate them.
+
+For the same two-children-per-parent rule, it might look something like this:
+
+```lean
+def discountedChildren (parents children : Nat) : Nat :=
+  min children (parents * 2)
+
+-- Never discount more children than actually exist
+theorem never_exceeds_children (p c : Nat) :
+    discountedChildren p c ≤ c := by
+  simp [discountedChildren]
+
+-- At most two discounted children per parent
+theorem never_exceeds_parent_limit (p c : Nat) :
+    discountedChildren p c ≤ p * 2 := by
+  simp [discountedChildren]
+```
+
+This isn't just checking the case of two parents and five children. It's proving that the number of discounted children never exceeds the limits, for any natural-number inputs.
+
+By the way, the author cannot read this code. AI wrote it for me. I ask AI to write code that proves the correctness of code written by AI. And then I can't read the proof code either.
+
+...What exactly am I verifying here?
+
+Of course, these proofs concern only the function shown here. They don't prove that some separately generated implementation is correct, let alone that the business rules themselves make sense.
+
 Software development is already complicated enough. Are we really going to ask every engineer on the team to master constraint logic programming just to validate AI-generated code?
 
 Wouldn't that kill the team?
