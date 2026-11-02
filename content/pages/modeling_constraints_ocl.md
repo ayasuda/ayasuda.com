@@ -96,6 +96,33 @@ discounted_children(Parents, Children, Discounted) :-
 
 ……とはいえ、これはまだ単純な例である。年齢制限、別の割引との併用、適用期間なんてものが入ると、さらに考えることが増える。
 
+ちなみに、制約を満たす値を探すのではなく、そもそもプログラムが制約を破らないことを数学的に証明する、という方法もある。[Lean](https://en.wikipedia.org/wiki/Lean_(proof_assistant))のような定理証明支援系だ。
+
+同じ「親一人につき子供二人まで半額」で考えると、例えばこんな感じになる。
+
+```lean
+def discountedChildren (parents children : Nat) : Nat :=
+  min children (parents * 2)
+
+-- 半額の子供が実際の子供の人数を超えない
+theorem never_exceeds_children (p c : Nat) :
+    discountedChildren p c ≤ c := by
+  simp [discountedChildren]
+
+-- 親一人につき最大二人まで
+theorem never_exceeds_parent_limit (p c : Nat) :
+    discountedChildren p c ≤ p * 2 := by
+  simp [discountedChildren]
+```
+
+こちらは、たまたま親二人・子供五人の場合に正しいという話ではない。どんな自然数の組み合わせでも、半額対象の人数が上限を超えないことを証明しようとしている。
+
+なお、著者はこのコードが読めない。AIに作ってもらったからだ。AIが実装したコードの正しさを証明するコードを、またAIに作ってもらう。そして読めない。
+
+……僕は一体、何を検証しているんだろう。
+
+もちろん、これで証明できるのはここに書いた関数の性質だけだ。別に生成された実装の正しさや、業務ルールそのものの妥当性まで証明できるわけではない。
+
 ただでさえソフトウェア開発は複雑なのに、AIが生成したコードの妥当性を検証するために、現場のエンジニア全員に制約論理プログラミングを習得してもらうのか？
 
 現場が死ぬんじゃないか？
